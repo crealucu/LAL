@@ -101,10 +101,16 @@ int main(int argc,char *argv[])
   // test 4: test for A = a*B + C;
   err += print_test_header(test_no++, "A = a*B + C\n");
   
+  double a = 0.2;
   B.initialization(3,3,1.0);
   C.initialization(3,3,0.1);
-  
-  A = C - 0.1 + B*C*C*0.1;    
+ 
+  A = a*B + C;
+
+  printf("a = %f\n", a);
+  B.print("B");
+  C.print("C");
+
   A.print("A");
 
   err += judge_test(A,data);   
