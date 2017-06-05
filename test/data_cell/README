@@ -1,0 +1,12 @@
+Test data cell operattions:
+Test 0: Construct a data cell with a data array
+Test 1: Perform A = B
+Test 2: Perform C[4 by 4] = A[3 by 3], re-size matrix
+Test 3. Perform add to row B[3 by 3] => [3 by 6] by doning B = [B,A]
+Test 4. Perform add to col C[3 by 3] => [6 by 3] by doning C = [C;A]
+Test 5. Perform get a cell from C[6 by 3] => D = C(3:4, 2:3)
+
+To run tests,
+1. make
+2. ./data_cell_test
+

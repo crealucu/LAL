@@ -1,0 +1,8 @@
+Test example for checking memory leak.
+The example inlcudes data cell operataions.
+By measuring memory before and after data cell operation,
+Memory leak is checked.
+
+To perform memory leak test,
+1. make
+2. ./memory_check

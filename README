@@ -1,0 +1,5 @@
+Linear Algebra Library(LAL) is a c++ template library for general Matrix vector operations.
+In developing, gcc/4.9.2 compiler is used.
+
+To compile, do make.
+There are several verification tests in the test directory.

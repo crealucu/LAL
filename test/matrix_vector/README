@@ -1,0 +1,8 @@
+Test examples perform basic matrix vector operations and check their correctness.
+
+Test 0: A = B + C;
+
+
+To run tests,
+1. make
+2. ./matrix_vector_test
