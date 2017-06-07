@@ -54,21 +54,25 @@ int main(int argc,char *argv[])
   int err = 0;
   struct rusage r;
 
-  for(int ia=0; ia<10000; ia++)
+  int ia = 0;
+  long mem_0 = 0;
+  long mem_1 = 0;
+
+  for(ia=0; ia<10000; ia++)
     err += do_data_cell_operations();
   
   // get current resource usage
   err += getrusage(RUSAGE_SELF, &r);
-  long mem_0 = r.ru_maxrss;
+  mem_0 = r.ru_maxrss;
     
-  for(int ia=0; ia<10000; ia++)
+  for(ia=0; ia<10000; ia++)
     err += do_data_cell_operations();
   
   // get resource usage after more data cell operations
   // if memory increaces, there are memory leaks due to
   // data cell operations
   err += getrusage(RUSAGE_SELF, &r);
-  long mem_1 = r.ru_maxrss;
+  mem_1 = r.ru_maxrss;
 
   // print results
   cout << "Initial measured memory : " << mem_0 << "kByte\n";
