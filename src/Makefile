@@ -1,14 +1,9 @@
+include ../make.in
+
 #########################################################
 # set library name
 #########################################################
 OLIB = libLAL.a
-
-#########################################################
-# compiler
-#########################################################
-CXX = g++
-#AR       = ar
-#ARFLAGS = -rcs
 
 #########################################################
 # set path
@@ -16,10 +11,7 @@ CXX = g++
 DIR_TOP = $(PWD)/..
 MKL_inc = $(MKLROOT)/include
 
-INCs = -I$(DIR_TOP)/include \
-	-I${MKL_inc}
-
-CFLAGS = -Wall -O3 -g -std=c++11
+INCs = -I$(DIR_TOP)/include -I${MKL_inc}
 
 #########################################################
 # get objs
@@ -38,9 +30,8 @@ all: $(OBJ) $(OLIB)
 
 $(OLIB): $(OBJ)
 	$(AR) $(ARFLAGS) $(OLIB) $(OBJ)	
-#	rm -rf $(OBJ)
 	mv $(OLIB) ../lib
 
 clean :
-	rm -rf *.o
+	rm -rf *.o ../lib/$(OLIB)
 	

@@ -1,0 +1,10 @@
+#########################################################
+# set path
+#########################################################
+CXX = g++
+LINK = g++
+FLAGS = -O3 -std=gnu++14
+
+MKL_inc = $(MKLROOT)/include
+MKL_lib =  $(MKLROOT)/lib/intel64/libmkl_intel_lp64.a $(MKLROOT)/lib/intel64/libmkl_sequential.a $(MKLROOT)/lib/intel64/libmkl_core.a -lpthread
+

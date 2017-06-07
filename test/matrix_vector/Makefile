@@ -1,3 +1,4 @@
+
 SRC = $(shell ls *.cc)
 OBJs = $(SRC:.cc=.o)
 PROG = matrix_vector_test
@@ -6,24 +7,13 @@ PROG = matrix_vector_test
 # set path
 #########################################################
 DIR_TOP = $(PWD)/../..
+include $(DIR_TOP)/make.in
 
-
-LAL_lib = -L$(DIR_TOP)/lib -lLAL
-
-CXX = g++
-LINK = g++
-
-MKL_inc = $(MKLROOT)/include
-MKL_lib = -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread	
-
-INCs = -I$(DIR_TOP)/include \
-	-I${MKL_inc}
-
-LIBs = $(LAL_lib) $(MKL_lib)
-CFLAGS = -Wall -O3 -g -std=c++11
+INCs = -I$(DIR_TOP)/include -I$(MKL_inc)
+LIBs = $(MKL_lib)
 
 all: $(OBJs)
-	$(LINK) $(CFLAGS) $(OBJs) $(LIBs) -o $(PROG)  
+	$(LINK) $(CFLAGS) $(OBJs) $(MKL_lib) -o $(PROG)  
 	
 %.o:%.cc
 	$(CXX) $(CFLAGS) $(INCs) -c $<

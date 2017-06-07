@@ -1,3 +1,4 @@
+
 SRC = $(shell ls *.cc)
 OBJs = $(SRC:.cc=.o)
 PROG = memory_check
@@ -6,25 +7,13 @@ PROG = memory_check
 # set path
 #########################################################
 DIR_TOP = $(PWD)/../..
-
-
-LAL_lib = $(DIR_TOP)/src/matrix_vector.o
-
-CXX = g++
-LINK = g++
-
-INCs = -I$(DIR_TOP)/include
-
-MKL_inc = $(MKLROOT)/include
-MKL_lib = -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread
+include $(DIR_TOP)/make.in
 
 INCs = -I$(DIR_TOP)/include -I$(MKL_inc)
-
-LIBs = $(LAL_lib) $(MKL_lib)
-CFLAGS = -Wall -O3 -g -std=c++11
+LIBs = $(MKL_lib)
 
 all: $(OBJs)
-	$(LINK) $(CFLAGS) $(OBJs) $(LIBs) -o $(PROG)  
+	$(LINK) $(CFLAGS) $(OBJs) $(MKL_lib) -o $(PROG)  
 	
 %.o:%.cc
 	$(CXX) $(CFLAGS) $(INCs) -c $<

@@ -1,4 +1,6 @@
+
 all: SRC
+
 
 SRC:
 	cd src; make;
